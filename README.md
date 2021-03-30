@@ -23,6 +23,7 @@ DATABASES = {
 }
 
 ```
+settings.py DATABASE를 하단과 같이 변경
 
 ```
 from . import my_settings
