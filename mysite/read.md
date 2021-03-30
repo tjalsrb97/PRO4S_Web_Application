@@ -8,6 +8,22 @@ $ pip install mysqlclient
 
 DB 연결을 할 시 my_settings.py 를 이용하여 DATABASE를 가져와야함
 
+my_settings.py 내용을 적절히 수정바람(Host, 비밀번호 )
+
+```
+DATABASES = {
+    'default' : {
+        'ENGINE': 'django.db.backends.mysql',  
+        'NAME': 'webdb',  
+        'USER': 'root',  
+        'PASSWORD': 'password',  
+        'HOST': 'DBIPADDRESS',   
+        'PORT': '3306',  
+    }
+}
+
+```
+
 ```
 import my_settings
 
