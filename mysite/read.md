@@ -5,3 +5,11 @@
 ```
 $ pip install mysqlclient
 ```
+
+DB 연결을 할 시 my_settings.py 를 이용하여 DATABASE를 가져와야함
+
+```
+import my_settings
+
+DATABASES = my_settings.DATABASES
+```
