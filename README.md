@@ -25,7 +25,7 @@ DATABASES = {
 ```
 
 ```
-import my_settings
+from . import my_settings
 
 DATABASES = my_settings.DATABASES
 ```
