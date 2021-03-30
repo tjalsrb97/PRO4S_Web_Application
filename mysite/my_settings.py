@@ -1,7 +1,7 @@
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "weDB",
+        "NAME": "webDB",
         "USER": "root",
         "PASSWORD": "pro4spro4s!!",
         "HOST": "localhost",

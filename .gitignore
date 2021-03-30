@@ -3,6 +3,6 @@
 __pycache__
 myvenv
 db.sqlite3
-my_settings
+/mystie/my_settings.py
 /static
 .DS_Store
