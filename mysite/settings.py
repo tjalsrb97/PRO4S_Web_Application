@@ -117,3 +117,5 @@ USE_TZ = True
 
 STATIC_URL = "/project/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+from keras import load_model
