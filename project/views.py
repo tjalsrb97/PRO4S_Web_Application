@@ -13,3 +13,6 @@ def path_loss_predict(request):
 
 def dashboard(request):
     return render(request, 'project/board.html', {})
+
+def login(request):
+    return render(request, 'project/login.html', {})
