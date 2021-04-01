@@ -3,8 +3,8 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "webdb",
         "USER": "root",
-        #         'PASSWORD':'',
-        #         'HOST': '',
+        "PASSWORD": "",
+        "HOST": "",
         "PORT": "3306",
     }
 }
