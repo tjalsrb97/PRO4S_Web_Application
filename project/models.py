@@ -15,7 +15,7 @@ class Ap(models.Model):
     time = models.DateTimeField(
         db_column="TIME", blank=True, null=True
     )  # Field name made lowercase.
-    x_coord = models.CharField( 
+    x_coord = models.CharField(
         db_column="X_coord", max_length=45
     )  # Field name made lowercase.
     y_coord = models.CharField(
