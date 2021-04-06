@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Post
 
 def introduction(request):
     return render(request, 'project/intro.html', {})
