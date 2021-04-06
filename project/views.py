@@ -47,7 +47,7 @@ def login(request):
 
 def logout(request):
     auth_logout(request)
-    return render(request, "project/login.html", {})
+    return redirect("index")
 
 
 def not_authenticated(request):
