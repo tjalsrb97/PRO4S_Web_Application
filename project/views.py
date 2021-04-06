@@ -1,26 +1,58 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.conf import settings
 from django.utils import timezone
-from .models import User, UserExperiment, Result, Ap
+from django.contrib import messages
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login, logout as auth_logout
+from django.contrib.auth.decorators import login_required
+from .models import UserExperiment, Result, Ap
 
 
+@login_required
 def introduction(request):
     return render(request, "project/intro.html", {})
 
 
+@login_required
 def research_result(request):
     return render(request, "project/result.html", {})
 
 
+@login_required
 def path_loss_predict(request):
     return render(request, "project/predict.html", {})
 
 
+@login_required
 def dashboard(request):
     return render(request, "project/board.html", {})
 
 
+def index(request):
+    return render(request, "project/index.html")
+
+
 def login(request):
+    username = request.POST["username"]
+    password = request.POST["password"]
+
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        auth_login(request, user)
+        return render(request, "project/intro.html", {"user": user},)
+    else:
+        messages.error(request, "invalid login")
+        return redirect("index")
+
+
+def logout(request):
+    auth_logout(request)
     return render(request, "project/login.html", {})
+
+
+def not_authenticated(request):
+    if not request.user.is_authenticated:
+        return redirect("%s?next=%s" % (settings.LOGIN_URL, request.path))
 
 
 # @csrf_exempt

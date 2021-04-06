@@ -172,17 +172,17 @@ class Result(models.Model):
         db_table = "result"
 
 
-class User(models.Model):
-    name = models.CharField(max_length=45, blank=True, null=True)
-    id = models.CharField(primary_key=True, max_length=45)
-    password = models.CharField(max_length=45, blank=True, null=True)
-    e_mail = models.CharField(
-        db_column="e-mail", max_length=45, blank=True, null=True
-    )  # Field renamed to remove unsuitable characters.
+# class User(models.Model):
+#     name = models.CharField(max_length=45, blank=True, null=True)
+#     id = models.CharField(primary_key=True, max_length=45)
+#     password = models.CharField(max_length=45, blank=True, null=True)
+#     e_mail = models.CharField(
+#         db_column="e-mail", max_length=45, blank=True, null=True
+#     )  # Field renamed to remove unsuitable characters.
 
-    class Meta:
-        managed = False
-        db_table = "user"
+#     class Meta:
+#         managed = False
+#         db_table = "user"
 
 
 class UserExperiment(models.Model):

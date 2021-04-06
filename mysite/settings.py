@@ -112,6 +112,7 @@ USE_TZ = True
 STATIC_URL = "/project/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
+LOGIN_URL = "/project/login.html"
 # from keras.models import load_model
 
 # DLModel = load_model("/project/static/DLModel/20_20_100_v2_6.45.h5")
