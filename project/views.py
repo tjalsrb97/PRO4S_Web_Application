@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.conf import settings
 from django.utils import timezone
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
 from .models import UserExperiment, Result, Ap
 
 
@@ -53,6 +54,17 @@ def logout(request):
 def not_authenticated(request):
     if not request.user.is_authenticated:
         return redirect("%s?next=%s" % (settings.LOGIN_URL, request.path))
+
+
+# def handler404(request, exception):
+#     context = {}
+#     response = render(request, "project/404.html", context=context)
+#     response.status_code = 404
+#     return response
+
+
+# def custom500(request):
+#     return render(request, "project/500.html", {})
 
 
 # @csrf_exempt
