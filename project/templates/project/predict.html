@@ -2,28 +2,28 @@
 
 {% block content %}
 <section id="main-content">
-    <section class="wrapper">
-      <div class="row">
-        <div class="col-lg-12">
-          <h3 class="page-header"><i class="fa fa-user-md"></i> Path Loss Predict </h3>
-          <ol class="breadcrumb">
-            <li><i class="fa fa-home"></i><a href="{% url 'introduction' %}">Home</a></li>
-            <li><i class="icon_documents_alt"></i>Pages</li>
-            <li><i class="fa fa-user-md"></i>Path Loss Predict</li>
-          </ol>
-        </div>
+  <section class="wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <h3 class="page-header"><i class="fa fa-user-md"></i> Path Loss Predict </h3>
+        <ol class="breadcrumb">
+          <li><i class="fa fa-home"></i><a href="{% url 'introduction' %}">Home</a></li>
+          <li><i class="icon_documents_alt"></i>Pages</li>
+          <li><i class="fa fa-user-md"></i>Path Loss Predict</li>
+        </ol>
       </div>
+    </div>
 
-<section id="main-content">
-    <section class="wrapper">
-      <!--overview start-->
-      
+    <section id="main-content">
+      <section class="wrapper">
+        <!--overview start-->
 
 
 
-    
 
-      <!-- statics end -->
+
+
+        <!-- statics end -->
 
 
         <div class="col-md-6 portlets">
@@ -41,36 +41,41 @@
 
                 <div class="form quick-post">
                   <!-- Edit profile form (not working)-->
-                  <form method="post" class="form-horizontal">
+                  <form method="POST" action="{% url 'path_loss_predict' %}" class="form-horizontal">
                     {% csrf_token %}
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="title">X coordinate</label>
                       <div class="col-lg-10">
-                        <input type="text" class="form-control" id="title" value="{{ form.title.value|default_if_none:'' }}">
+                        <input type="text" class="form-control" id="title"
+                          value={{ form.title.value|default_if_none:'' }}>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="title">Y coordinate</label>
                       <div class="col-lg-10">
-                        <input type="text" class="form-control" id="title2" value="{{ form.title2.value|default_if_none:'' }}">
+                        <input type="text" class="form-control" id="title2"
+                          value={{ form.title2.value|default_if_none:'' }}>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="title">Z coordinate</label>
                       <div class="col-lg-10">
-                        <input type="text" class="form-control" id="title7" value="{{ form.title7.value|default_if_none:'' }}"> 
+                        <input type="text" class="form-control" id="title7"
+                          value={{ form.title7.value|default_if_none:'' }}>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="title">Azimuth</label>
                       <div class="col-lg-10">
-                        <input type="text" class="form-control" id="title3" value="{{ form.title3.value|default_if_none:'' }}">
+                        <input type="text" class="form-control" id="title3"
+                          value={{ form.title3.value|default_if_none:'' }}>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="title">Downtilt</label>
                       <div class="col-lg-10">
-                        <input type="text" class="form-control" id="title4" value="{{ form.title4.value|default_if_none:'' }}">
+                        <input type="text" class="form-control" id="title4"
+                          value={{ form.title4.value|default_if_none:'' }}>
                       </div>
                     </div>
 
@@ -95,12 +100,12 @@
 
         </div>
 
-      </div>
-      <!-- project team & activity end -->
+        </div>
+        <!-- project team & activity end -->
+
+      </section>
 
     </section>
-    
+    <!--main content end-->
   </section>
-  <!--main content end-->
-</section>
-{% endblock %}
+  {% endblock %}

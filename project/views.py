@@ -26,7 +26,6 @@ def research_result(request):
 def path_loss_predict(request):
     if request.method == "POST":
         form = APForm(request.POST)
-        print(form)
         if form.is_valid():
             ap = form.save(commit=False)
             ap.author = request.user
