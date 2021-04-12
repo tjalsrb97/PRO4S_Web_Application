@@ -1,18 +1,12 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.conf import settings
 from django.utils import timezone
-<<<<<<< HEAD
-from .forms import APForm
-from django.shortcuts import redirect
-
-=======
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from .models import UserExperiment, Result, Ap
->>>>>>> 1d4cbffbd331f23510613effa8ab3e24f5eaee18
 
 
 
@@ -28,7 +22,6 @@ def research_result(request):
 
 @login_required
 def path_loss_predict(request):
-<<<<<<< HEAD
     if request.method == "POST":
         form = APForm(request.POST)
         print(form)
@@ -39,10 +32,6 @@ def path_loss_predict(request):
     else:
         form = APForm()
     return render(request, 'project/predict.html', {'form': form})
-=======
-    return render(request, "project/predict.html", {})
-
->>>>>>> 1d4cbffbd331f23510613effa8ab3e24f5eaee18
 
 @login_required
 def dashboard(request):
