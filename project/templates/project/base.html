@@ -69,7 +69,7 @@
                                 <span class="profile-ava">
                                     <img alt="" src="{% static 'img/avatar1_small.jpg' %}">
                                 </span>
-                                <span class="username">Jenifer Smith</span>
+                                <span class="username">{{user.first_name}} {{user.last_name}}</span>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu extended logout">
@@ -95,7 +95,7 @@
                                         Chats</a>
                                 </li>
                                 <li>
-                                    <a href="login.html">
+                                    <a href="{% url 'logout' %}">
                                         <i class="icon_key_alt"></i>
                                         Log Out</a>
                                 </li>

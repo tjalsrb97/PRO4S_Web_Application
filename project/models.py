@@ -9,6 +9,7 @@ from django.db import models
 
 
 class Ap(models.Model):
+
     ap_idx = models.AutoField(db_column='AP_idx', primary_key=True)  # Field name made lowercase.
     time = models.DateTimeField(db_column='TIME', blank=True, null=True)  # Field name made lowercase.
     x_coord = models.CharField(db_column='X_coord', max_length=45)  # Field name made lowercase.
@@ -27,11 +28,14 @@ class AuthGroup(models.Model):
 
     class Meta:
         managed = False
+
         db_table = 'auth_group'
+
 
 
 class AuthGroupPermissions(models.Model):
     group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
+
     permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
 
     class Meta:
@@ -40,9 +44,12 @@ class AuthGroupPermissions(models.Model):
         unique_together = (('group', 'permission'),)
 
 
+
 class AuthPermission(models.Model):
     name = models.CharField(max_length=255)
+
     content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
+
     codename = models.CharField(max_length=100)
 
     class Meta:
@@ -111,7 +118,6 @@ class DjangoContentType(models.Model):
         db_table = 'django_content_type'
         unique_together = (('app_label', 'model'),)
 
-
 class DjangoMigrations(models.Model):
     app = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
@@ -152,24 +158,38 @@ class Result(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'result'
+        db_table = "result"
 
 
-class User(models.Model):
-    name = models.CharField(max_length=45, blank=True, null=True)
-    id = models.CharField(primary_key=True, max_length=45)
-    password = models.CharField(max_length=45, blank=True, null=True)
-    e_mail = models.CharField(db_column='e-mail', max_length=45, blank=True, null=True)  # Field renamed to remove unsuitable characters.
+# class User(models.Model):
+#     name = models.CharField(max_length=45, blank=True, null=True)
+#     id = models.CharField(primary_key=True, max_length=45)
+#     password = models.CharField(max_length=45, blank=True, null=True)
+#     e_mail = models.CharField(
+#         db_column="e-mail", max_length=45, blank=True, null=True
+#     )  # Field renamed to remove unsuitable characters.
 
-    class Meta:
-        managed = False
-        db_table = 'user'
+#     class Meta:
+#         managed = False
+#         db_table = "user"
 
 
 class UserExperiment(models.Model):
-    user_id = models.CharField(db_column='User_ID', primary_key=True, max_length=45)  # Field name made lowercase.
-    ap_idx = models.ForeignKey(Ap, models.DO_NOTHING, db_column='AP_idx', unique=True)  # Field name made lowercase.
-    result_idx = models.ForeignKey(Result, models.DO_NOTHING, db_column='Result_idx')  # Field name made lowercase.
+    user_id = models.CharField(
+        db_column="User_ID", primary_key=True, max_length=45
+    )  # Field name made lowercase.
+    ap_idx = models.ForeignKey(
+        Ap, models.DO_NOTHING, db_column="AP_idx", unique=True
+    )  # Field name made lowercase.
+    result_idx = models.ForeignKey(
+        Result, models.DO_NOTHING, db_column="Result_idx"
+    )  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = "user_experiment"
+
+
 
     class Meta:
         managed = False

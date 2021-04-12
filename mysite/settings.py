@@ -79,17 +79,6 @@ from . import my_settings
 
 DATABASES = my_settings.DATABASES
 
-# DATABASES = {
-#     'default' : {
-#         'ENGINE': 'django.db.backends.mysql',  
-#         'NAME': 'webdb',  
-#         'USER': 'root',  
-#         'PASSWORD': 'pro4spro4s!',  
-#         'HOST': '223.194.46.205',   
-#         'PORT': '3306',  
-#     }
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -121,6 +110,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = "/static/"
+STATIC_URL = "/project/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
+LOGIN_URL = "/project/login.html"
+# from keras.models import load_model
+
+# DLModel = load_model("/project/static/DLModel/20_20_100_v2_6.45.h5")
