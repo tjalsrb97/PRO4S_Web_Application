@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect
 from django.conf import settings
 from django.utils import timezone
 from django.contrib import messages
