@@ -9,6 +9,7 @@ from django.template import RequestContext
 from .models import UserExperiment, Result, Ap
 
 
+
 @login_required
 def introduction(request):
     return render(request, "project/intro.html", {})
