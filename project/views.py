@@ -28,7 +28,7 @@ def path_loss_predict(request):
         form = APForm(request.POST)
         if form.is_valid():
             ap = form.save(commit=False)
-            ap.author = request.user
+            ap.time = timezone.now()
             ap.save()
     else:
         form = APForm()

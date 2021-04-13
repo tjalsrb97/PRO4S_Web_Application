@@ -43,39 +43,35 @@
                   <!-- Edit profile form (not working)-->
                   <form method="POST" action="{% url 'path_loss_predict' %}" class="form-horizontal">
                     {% csrf_token %}
+
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="title">X coordinate</label>
                       <div class="col-lg-10">
-                        <input type="text" class="form-control" id="title"
-                          value={{ form.title.value|default_if_none:'' }}>
+                        {{ form.x_coord }}
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="title">Y coordinate</label>
                       <div class="col-lg-10">
-                        <input type="text" class="form-control" id="title2"
-                          value={{ form.title2.value|default_if_none:'' }}>
+                        {{ form.y_coord }}
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="title">Z coordinate</label>
                       <div class="col-lg-10">
-                        <input type="text" class="form-control" id="title7"
-                          value={{ form.title7.value|default_if_none:'' }}>
+                        {{ form.z_coord }}
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="title">Azimuth</label>
                       <div class="col-lg-10">
-                        <input type="text" class="form-control" id="title3"
-                          value={{ form.title3.value|default_if_none:'' }}>
+                        {{ form.azimuth }}
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label col-lg-2" for="title">Downtilt</label>
                       <div class="col-lg-10">
-                        <input type="text" class="form-control" id="title4"
-                          value={{ form.title4.value|default_if_none:'' }}>
+                        {{ form.downtilt }}
                       </div>
                     </div>
 

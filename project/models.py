@@ -8,6 +8,7 @@
 from django.db import models
 
 
+
 class Ap(models.Model):
     ap_idx = models.AutoField(db_column='AP_idx', primary_key=True)  # Field name made lowercase.
     time = models.DateTimeField(db_column='TIME', blank=True, null=True)  # Field name made lowercase.
