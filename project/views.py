@@ -64,10 +64,10 @@ def logout(request):
 def not_authenticated(request):
     if not request.user.is_authenticated:
         return redirect("%s?next=%s" % (settings.LOGIN_URL, request.path))
-from tensorflow.keras.models import load_model
+# from tensorflow.keras.models import load_model
 
-DLModel = load_model("./project/static/DLModel/20_20_100_v1_0510_jh1.h5")
-DLModel.summary()
+# DLModel = load_model("./project/static/DLModel/20_20_100_v1_0510_jh1.h5")
+# DLModel.summary()
 # def handler404(request, exception):
 #     context = {}
 #     response = render(request, "project/404.html", context=context)
