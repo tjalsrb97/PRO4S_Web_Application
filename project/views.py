@@ -30,6 +30,8 @@ def path_loss_predict(request):
             ap = form.save(commit=False)
             ap.time = timezone.now()
             ap.save()
+            return render(request, 'project/predict.html', {'form': form})
+
     else:
         form = APForm()
     return render(request, 'project/predict.html', {'form': form})

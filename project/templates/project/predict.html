@@ -42,55 +42,64 @@
                                     <form method="POST" action="{% url 'path_loss_predict' %}" class="form-horizontal">
                                         {% csrf_token %}
 
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-2" for="title">X coordinate</label>
-                                            <div class="col-lg-10">
+                                        <div class=" form-group ">
+                                            <label class="control-label col-lg-2 " for="title ">X coordinate</label>
+                                            <div class="col-lg-10 ">
                                                 {{ form.x_coord }}
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-2" for="title">Y coordinate</label>
-                                            <div class="col-lg-10">
+                                        <div class="form-group ">
+                                            <label class="control-label col-lg-2 " for="title ">Y coordinate</label>
+                                            <div class="col-lg-10 ">
                                                 {{ form.y_coord }}
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-2" for="title">Z coordinate</label>
-                                            <div class="col-lg-10">
+                                        <div class="form-group ">
+                                            <label class="control-label col-lg-2 " for="title ">Z coordinate</label>
+                                            <div class="col-lg-10 ">
                                                 {{ form.z_coord }}
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-2" for="title">Azimuth</label>
-                                            <div class="col-lg-10">
+                                        <div class="form-group ">
+                                            <label class="control-label col-lg-2 " for="title ">Azimuth</label>
+                                            <div class="col-lg-10 ">
                                                 {{ form.azimuth }}
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-2" for="title">Downtilt</label>
-                                            <div class="col-lg-10">
+                                        <div class="form-group ">
+                                            <label class="control-label col-lg-2 " for="title ">Downtilt</label>
+                                            <div class="col-lg-10 ">
                                                 {{ form.downtilt }}
                                             </div>
                                         </div>
 
                                         <!-- Buttons -->
-                                        <div class="form-group">
+                                        <div class="form-group ">
                                             <!-- Buttons -->
-                                            <div class="col-lg-offset-2 col-lg-9">
-                                                <button type="submit" class="btn btn-primary">Predict</button>
+                                            <div class="col-lg-offset-2 col-lg-9 ">
+                                                <div id="loader ">
+                                                    <div class="lds-ring ">
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                    </div>
+                                                </div>
+                                                <button type="submit " class="btn btn-primary " onclick="load()">Predict</button>
                                             </div>
                                         </div>
 
                                 </div>
 
                             </div>
+
                             <!-- project team & activity end -->
 
             </section>
 
 
             </div>
-            <div class="widget-foot">
+            <div class="widget-foot ">
                 <!-- Footer goes here -->
             </div>
             </div>
@@ -110,4 +119,63 @@
     </section>
     <!--main content end-->
 </section>
+<style>
+    #loader {
+        display: none;
+    }
+    
+    #loader.active {
+        display: block;
+    }
+    
+    .lds-ring {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+    }
+    
+    .lds-ring div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border: 8px solid red;
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: red transparent transparent transparent;
+    }
+    
+    .lds-ring div:nth-child(1) {
+        animation-delay: -0.45s;
+    }
+    
+    .lds-ring div:nth-child(2) {
+        animation-delay: -0.3s;
+    }
+    
+    .lds-ring div:nth-child(3) {
+        animation-delay: -0.15s;
+    }
+    
+    @keyframes lds-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+<script>
+    function load() {
+        document.getElementById("loader").classList.add("active");
+        setTimeout(function() {
+            document.getElementById("loader").classList.remove("active");
+        }, 3000);
+    };
+</script>
+
 {% endblock %}
