@@ -113,4 +113,3 @@ STATIC_URL = "/project/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 LOGIN_URL = "/project/login.html"
-

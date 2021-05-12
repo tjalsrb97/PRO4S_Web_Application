@@ -9,28 +9,17 @@ from django.db import models
 
 
 class Ap(models.Model):
-    ap_idx = models.AutoField(
-        db_column="AP_idx", primary_key=True
-    )  # Field name made lowercase.
-    time = models.DateTimeField(
-        db_column="TIME", blank=True, null=True
-    )  # Field name made lowercase.
-    x_coord = models.CharField(
-        db_column="X_coord", max_length=45
-    )  # Field name made lowercase.
-    y_coord = models.CharField(
-        db_column="Y_coord", max_length=45
-    )  # Field name made lowercase.
-    z_coord = models.CharField(
-        db_column="Z_coord", max_length=45
-    )  # Field name made lowercase.
-    azimuth = models.CharField(
-        db_column="Azimuth", max_length=45
-    )  # Field name made lowercase.
+
+    ap_idx = models.AutoField(db_column='AP_idx', primary_key=True)  # Field name made lowercase.
+    time = models.DateTimeField(db_column='TIME', blank=True, null=True)  # Field name made lowercase.
+    x_coord = models.CharField(db_column='X_coord', max_length=45)  # Field name made lowercase.
+    y_coord = models.CharField(db_column='Y_coord', max_length=45)  # Field name made lowercase.
+    z_coord = models.CharField(db_column='Z_coord', max_length=45)  # Field name made lowercase.
+    azimuth = models.CharField(db_column='Azimuth', max_length=45)  # Field name made lowercase.
 
     class Meta:
         managed = False
-        db_table = "ap"
+        db_table = 'ap'
 
 
 class AuthGroup(models.Model):
@@ -38,28 +27,34 @@ class AuthGroup(models.Model):
 
     class Meta:
         managed = False
-        db_table = "auth_group"
+
+        db_table = 'auth_group'
+
 
 
 class AuthGroupPermissions(models.Model):
     group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
-    permission = models.ForeignKey("AuthPermission", models.DO_NOTHING)
+
+    permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
 
     class Meta:
         managed = False
-        db_table = "auth_group_permissions"
-        unique_together = (("group", "permission"),)
+        db_table = 'auth_group_permissions'
+        unique_together = (('group', 'permission'),)
+
 
 
 class AuthPermission(models.Model):
     name = models.CharField(max_length=255)
-    content_type = models.ForeignKey("DjangoContentType", models.DO_NOTHING)
+
+    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
+
     codename = models.CharField(max_length=100)
 
     class Meta:
         managed = False
-        db_table = "auth_permission"
-        unique_together = (("content_type", "codename"),)
+        db_table = 'auth_permission'
+        unique_together = (('content_type', 'codename'),)
 
 
 class AuthUser(models.Model):
@@ -76,7 +71,7 @@ class AuthUser(models.Model):
 
     class Meta:
         managed = False
-        db_table = "auth_user"
+        db_table = 'auth_user'
 
 
 class AuthUserGroups(models.Model):
@@ -85,8 +80,8 @@ class AuthUserGroups(models.Model):
 
     class Meta:
         managed = False
-        db_table = "auth_user_groups"
-        unique_together = (("user", "group"),)
+        db_table = 'auth_user_groups'
+        unique_together = (('user', 'group'),)
 
 
 class AuthUserUserPermissions(models.Model):
@@ -95,8 +90,8 @@ class AuthUserUserPermissions(models.Model):
 
     class Meta:
         managed = False
-        db_table = "auth_user_user_permissions"
-        unique_together = (("user", "permission"),)
+        db_table = 'auth_user_user_permissions'
+        unique_together = (('user', 'permission'),)
 
 
 class DjangoAdminLog(models.Model):
@@ -105,14 +100,12 @@ class DjangoAdminLog(models.Model):
     object_repr = models.CharField(max_length=200)
     action_flag = models.PositiveSmallIntegerField()
     change_message = models.TextField()
-    content_type = models.ForeignKey(
-        "DjangoContentType", models.DO_NOTHING, blank=True, null=True
-    )
+    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
 
     class Meta:
         managed = False
-        db_table = "django_admin_log"
+        db_table = 'django_admin_log'
 
 
 class DjangoContentType(models.Model):
@@ -121,9 +114,8 @@ class DjangoContentType(models.Model):
 
     class Meta:
         managed = False
-        db_table = "django_content_type"
-        unique_together = (("app_label", "model"),)
-
+        db_table = 'django_content_type'
+        unique_together = (('app_label', 'model'),)
 
 class DjangoMigrations(models.Model):
     app = models.CharField(max_length=255)
@@ -132,7 +124,7 @@ class DjangoMigrations(models.Model):
 
     class Meta:
         managed = False
-        db_table = "django_migrations"
+        db_table = 'django_migrations'
 
 
 class DjangoSession(models.Model):
@@ -142,7 +134,7 @@ class DjangoSession(models.Model):
 
     class Meta:
         managed = False
-        db_table = "django_session"
+        db_table = 'django_session'
 
 
 class ProjectPost(models.Model):
@@ -154,17 +146,13 @@ class ProjectPost(models.Model):
 
     class Meta:
         managed = False
-        db_table = "project_post"
+        db_table = 'project_post'
 
 
 class Result(models.Model):
     result_idx = models.IntegerField(primary_key=True)
-    rmse = models.CharField(
-        db_column="RMSE", max_length=45, blank=True, null=True
-    )  # Field name made lowercase.
-    mae = models.CharField(
-        db_column="MAE", max_length=45, blank=True, null=True
-    )  # Field name made lowercase.
+    rmse = models.CharField(db_column='RMSE', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    mae = models.CharField(db_column='MAE', max_length=45, blank=True, null=True)  # Field name made lowercase.
     image = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
@@ -200,3 +188,8 @@ class UserExperiment(models.Model):
         managed = False
         db_table = "user_experiment"
 
+
+
+    class Meta:
+        managed = False
+        db_table = 'user_experiment'
