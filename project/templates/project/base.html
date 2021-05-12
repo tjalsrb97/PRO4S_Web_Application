@@ -12,6 +12,10 @@
         <meta
             name="keyword"
             content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
 
         <title>PRO4S, 5G mmWave Path Loss Predict Model</title>
@@ -28,6 +32,57 @@
         <link href="{% static 'css/style.css' %}" rel="stylesheet">
         <link href="{% static 'css/style-responsive.css' %}" rel="stylesheet"/>
 
+        
+        <link rel="stylesheet" href="{% static 'css/resources/ol.css'%}">
+        <link rel="stylesheet" href="{% static 'resources/ol-layerswitcher.css'%}">
+        <link rel="stylesheet" href="{% static 'css/resources/qgis2web.css'%}">
+        <style>
+            .search-layer {
+                top: 65px;
+                left: .5em;
+            }
+            
+            .ol-touch .search-layer {
+                top: 80px;
+            }
+        </style>
+        <style>
+            html,
+            body {
+                background-color: #ffffff;
+            }
+            
+            .ol-control button {
+                background-color: #f8f8f8 !important;
+                color: #000000 !important;
+                border-radius: 0px !important;
+            }
+            
+            .ol-zoom,
+            .geolocate,
+            .gcd-gl-control .ol-control {
+                background-color: rgba(255, 255, 255, .4) !important;
+                padding: 3px !important;
+            }
+            
+            .ol-scale-line {
+                background: none !important;
+            }
+            
+            .ol-scale-line-inner {
+                border: 2px solid #f8f8f8 !important;
+                border-top: none !important;
+                background: rgba(255, 255, 255, 0.5) !important;
+                color: black !important;
+            }
+        </style>
+        <style>
+            #map {
+                width: 1540px;
+                height: 827px;
+            }
+        </style>
+        
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
         <!--[if lt IE 9]> <script src="js/html5shiv.js"></script> <script
         src="js/respond.min.js"></script> <script src="js/lte-ie7.js"></script>
@@ -173,6 +228,16 @@
         </section>
         <!-- container section end -->
         <!-- javascripts -->
+        <script src="{% static 'resources/qgis2web_expressions.js'%}"></script>
+        <script src="{% static 'resources/polyfills.js'%}"></script>
+        <script src="{% static 'resources/functions.js'%}"></script>
+        <script src="{% static 'resources/ol.js'%}"></script>
+        <script src="{% static 'resources/ol-layerswitcher.js'%}"></script>
+        <script src="{% static 'layers/temp_0.js'%}"></script><script src="{% static 'layers/Gangnam_1m_1.js'%}"></script>
+        <script src="{% static 'styles/temp_0_style.js'%}"></script><script src="{% static 'styles/Gangnam_1m_1_style.js'%}"></script>
+        <script src="{% static 'layers/layers.js'%}" type="text/javascript"></script> 
+        <script src="{% static 'resources/Autolinker.min.js'%}"></script>
+        <script src="{% static 'resources/qgis2web.js'%}"></script>
         <script src="{% static 'js/jquery.js' %}"></script>
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
         <!-- nice scroll -->
