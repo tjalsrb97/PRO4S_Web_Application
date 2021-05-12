@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect
 from django.conf import settings
 from django.utils import timezone
 from django.contrib import messages
@@ -7,6 +7,8 @@ from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from .models import UserExperiment, Result, Ap
+from .forms import APForm
+
 
 
 
@@ -22,8 +24,15 @@ def research_result(request):
 
 @login_required
 def path_loss_predict(request):
-    return render(request, "project/predict.html", {})
-
+    if request.method == "POST":
+        form = APForm(request.POST)
+        if form.is_valid():
+            ap = form.save(commit=False)
+            ap.time = timezone.now()
+            ap.save()
+    else:
+        form = APForm()
+    return render(request, 'project/predict.html', {'form': form})
 
 @login_required
 def dashboard(request):
