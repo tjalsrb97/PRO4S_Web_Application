@@ -8,8 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from .models import UserExperiment, Result, Ap
 from .forms import APForm
-
-
+import os
 
 
 @login_required
@@ -24,15 +23,36 @@ def research_result(request):
 
 @login_required
 def path_loss_predict(request):
+    print(os.getcwd())
     if request.method == "POST":
         form = APForm(request.POST)
         if form.is_valid():
             ap = form.save(commit=False)
             ap.time = timezone.now()
+            print(ap.x_coord)
             ap.save()
+
+        result = os.popen(
+            "python project/grid.py"
+            + " "
+            + str(ap.x_coord)
+            + "_"
+            + str(ap.y_coord)
+            + " "
+            + str(ap.x_coord)
+            + " "
+            + str(ap.y_coord)
+            + " "
+            + str(ap.azimuth)
+            + " "
+            + str(ap.downtilt)
+        ).read()
+        print(result)
+
     else:
         form = APForm()
-    return render(request, 'project/predict.html', {'form': form})
+    return render(request, "project/predict.html", {"form": form})
+
 
 @login_required
 def dashboard(request):
@@ -50,7 +70,11 @@ def login(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         auth_login(request, user)
-        return render(request, "project/intro.html", {"user": user},)
+        return render(
+            request,
+            "project/intro.html",
+            {"user": user},
+        )
     else:
         messages.error(request, "invalid login")
         return redirect("index")
@@ -64,10 +88,12 @@ def logout(request):
 def not_authenticated(request):
     if not request.user.is_authenticated:
         return redirect("%s?next=%s" % (settings.LOGIN_URL, request.path))
-from tensorflow.keras.models import load_model
 
-DLModel = load_model("./project/static/DLModel/20_20_100_v1_0510_jh1.h5")
-DLModel.summary()
+
+# from tensorflow.keras.models import load_model
+
+# DLModel = load_model("./project/static/DLModel/20_20_100_v1_0510_jh1.h5")
+# DLModel.summary()
 # def handler404(request, exception):
 #     context = {}
 #     response = render(request, "project/404.html", context=context)
