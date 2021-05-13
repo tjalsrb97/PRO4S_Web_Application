@@ -24,6 +24,7 @@ def research_result(request):
 
 @login_required
 def path_loss_predict(request):
+    
     if request.method == "POST":
         form = APForm(request.POST)
         if form.is_valid():

@@ -77,15 +77,13 @@
                                         <div class="form-group ">
                                             <!-- Buttons -->
                                             <div class="col-lg-offset-2 col-lg-9 ">
-                                                <div id="loader ">
-                                                    <div class="lds-ring ">
-                                                        <div></div>
-                                                        <div></div>
-                                                        <div></div>
-                                                        <div></div>
-                                                    </div>
+                                                <div class="lds-ring">
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
                                                 </div>
-                                                <button type="submit " class="btn btn-primary " onclick="load()">Predict</button>
+                                                <button type="submit " class="btn btn-primary " onclick="return load()">Predict</button>
                                             </div>
                                         </div>
 
@@ -120,14 +118,6 @@
     <!--main content end-->
 </section>
 <style>
-    #loader {
-        display: none;
-    }
-    
-    #loader.active {
-        display: block;
-    }
-    
     .lds-ring {
         display: inline-block;
         position: relative;
@@ -142,10 +132,10 @@
         width: 64px;
         height: 64px;
         margin: 8px;
-        border: 8px solid red;
+        border: 8px solid #fff;
         border-radius: 50%;
         animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-        border-color: red transparent transparent transparent;
+        border-color: #fff transparent transparent transparent;
     }
     
     .lds-ring div:nth-child(1) {
