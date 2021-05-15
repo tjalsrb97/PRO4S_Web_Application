@@ -7,7 +7,7 @@ urlpatterns = [
     path("logout/", views.logout, name="logout"),
     path("index/", views.index, name="index"),
     path("introduction/", views.introduction, name="introduction"),
-    path("research_result/", views.research_result, name="research_result"),
-    path("path_loss_predict/", views.path_loss_predict, name="path_loss_predict"),
-    path("dashboard/", views.dashboard, name="dashboard"),
+    path("analysis/", views.analysis, name="analysis"),
+    path("site_configuration/", views.site_configuration, name="site_configuration"),
+    path("visualization/", views.visualization, name="visualization"),
 ]

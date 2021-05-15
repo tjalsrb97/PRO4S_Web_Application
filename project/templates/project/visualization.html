@@ -7,7 +7,7 @@
                 <div class="col-lg-12">
                     <h3 class="page-header">
                         <i class="fa fa-user-md"></i>
-                        Dashboard
+                        Visualization
                     </h3>
                     <ol class="breadcrumb">
                         <li>
@@ -17,7 +17,7 @@
                         <li>
                             <i class="icon_documents_alt"></i>Pages</li>
                         <li>
-                            <i class="fa fa-user-md"></i>Dashboard</li>
+                            <i class="fa fa-user-md"></i>Visualization</li>
                             
                     </ol>
                     <div id="map">
@@ -34,4 +34,13 @@
     </section>
     {% load static %}
     <script src="{% static 'layers/temp_0.js'%}"></script>
+    {% for post in posts %}
+        <li>
+            <div class="title"><a href="">{{ post.title }}</a></div>
+            <div class="content">{{ post.content|truncatewords:30 }}</div>
+            <div class="published-date">{{ post.published_date }}</div>
+        </li>
+        {% endfor %}
+{ % load static % }
+  <script src="{% static 'styles/Gangnam_1m_1_style.js'%}"></script>
 {% endblock %}
