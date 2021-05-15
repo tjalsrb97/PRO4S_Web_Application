@@ -18,7 +18,11 @@ def copy(idx, result):
             jsonObj["features"][i]["properties"]["wb1"] = str(44.0)
     with open(copied_fp, "a") as fww:
         for i in range(len(jsonObj["features"])):
-            fww.write(str(jsonObj["features"][i]) + "\n")
+            fww.write(str(jsonObj["features"][i]))
+            if i != len(jsonObj["features"]) - 1:
+                fww.write(",\n")
+            else:
+                fww.write("\n")
         fww.write("]\n}\n")
 
 
