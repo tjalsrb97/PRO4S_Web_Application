@@ -17,13 +17,13 @@ def introduction(request):
 
 
 @login_required
-def research_result(request):
-    return render(request, "project/result.html", {})
+def analysis(request):
+    return render(request, "project/analysis.html", {})
 
 
 @login_required
-def path_loss_predict(request):
-    
+def site_configuration(request):
+    print(os.getcwd())
     if request.method == "POST":
         form = APForm(request.POST)
         if form.is_valid():
@@ -51,12 +51,13 @@ def path_loss_predict(request):
 
     else:
         form = APForm()
-    return render(request, "project/predict.html", {"form": form})
+
+    return render(request, "project/configurate.html", {"form": form})
 
 
 @login_required
-def dashboard(request):
-    return render(request, "project/board.html", {})
+def visualization(request):
+    return render(request, "project/visualization.html", {})
 
 
 def index(request):
