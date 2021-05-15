@@ -32,25 +32,23 @@ def site_configuration(request):
         if form.is_valid():
             ap = form.save(commit=False)
             ap.time = timezone.now()
-            print(ap.x_coord)
             ap.save()
 
-        result = os.popen(
-            "python project/grid.py"
-            + " "
-            + str(ap.x_coord)
-            + "_"
-            + str(ap.y_coord)
-            + " "
-            + str(ap.x_coord)
-            + " "
-            + str(ap.y_coord)
-            + " "
-            + str(ap.azimuth)
-            + " "
-            + str(ap.downtilt)
-        ).read()
-        print(result)
+        # result = os.popen(
+        #     "python project/grid.py"
+        #     + " "
+        #     + str(ap.x_coord)
+        #     + "_"
+        #     + str(ap.y_coord)
+        #     + " "
+        #     + str(ap.x_coord)
+        #     + " "
+        #     + str(ap.y_coord)
+        #     + " "
+        #     + str(ap.azimuth)
+        #     + " "
+        #     + str(ap.downtilt)
+        # ).read()
 
     else:
         form = APForm()
@@ -92,74 +90,7 @@ def logout(request):
 def not_authenticated(request):
     if not request.user.is_authenticated:
         return redirect("%s?next=%s" % (settings.LOGIN_URL, request.path))
-
-
 # from tensorflow.keras.models import load_model
 
 # DLModel = load_model("./project/static/DLModel/20_20_100_v1_0510_jh1.h5")
 # DLModel.summary()
-# def handler404(request, exception):
-#     context = {}
-#     response = render(request, "project/404.html", context=context)
-#     response.status_code = 404
-#     return response
-
-
-# def custom500(request):
-#     return render(request, "project/500.html", {})
-
-
-# @csrf_exempt
-# def signup(request):
-#     template_name = 'login.html'
-#     data = request.POST
-#     if User.objects.filter(user_id= data['id']).exists():
-#         context = {
-#             "result" : "이미 존재하는 아이디입니다."
-#         }
-#         return HttpResponse(json.dumps(context),content_type="application/json")
-#     else :
-#         User.objects.create(
-#             user_id = data['id'] ,
-#             email = data['email'] ,
-#             password = data['password'],
-#         ).save()
-#         context = {
-#             "result" : "회원가입 성공"
-#         }
-#         return HttpResponse(json.dumps(context),content_type="application/json")
-
-# @csrf_exempt
-# def loginCheck(request):
-#     template_name = 'login.html'
-#     request.session['loginOk'] = False
-#     try:
-#         data = request.POST
-#         inputId = data['id']
-#         inputPassword = data['password']
-
-#     except (KeyError,inputId == "",inputPassword == "") :
-#         context = {
-#             "uid" : "empty",
-#             "upass" : "empty",
-#         }
-#         return render(request,template_name,context)
-#     else :
-#         if User.objects.filter(user_id= inputId).exists():
-#             getUser = User.objects.get(user_id = inputId)
-#             if getUser.password == inputPassword :
-#                 request.session['loginOk'] = True
-#                 context = {
-#                     "result" : "로그인 성공"
-#                 }
-#             else :
-#                 request.session['loginOk'] = False
-#                 context = {
-#                     "result" : "비밀번호가 틀렸습니다"
-#                 }
-#         else :
-#             request.session['loginOk'] = False
-#             context = {
-#                 "result" : "존재하지 않는 id입니다"
-#             }
-#         return HttpResponse(json.dumps(context),content_type="application/json")
