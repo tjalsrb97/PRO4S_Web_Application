@@ -10,6 +10,9 @@ from .models import UserExperiment, Result, Ap
 from .forms import APForm
 import os
 
+# loading time
+# from .lams_on_svr import exit
+
 
 @login_required
 def introduction(request):
