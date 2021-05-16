@@ -34,21 +34,24 @@ def site_configuration(request):
             ap.time = timezone.now()
             ap.save()
 
-        # result = os.popen(
-        #     "python project/grid.py"
-        #     + " "
-        #     + str(ap.x_coord)
-        #     + "_"
-        #     + str(ap.y_coord)
-        #     + " "
-        #     + str(ap.x_coord)
-        #     + " "
-        #     + str(ap.y_coord)
-        #     + " "
-        #     + str(ap.azimuth)
-        #     + " "
-        #     + str(ap.downtilt)
-        # ).read()
+        result = os.popen(
+            "python project/grid.py"
+            + " "
+            + str(ap.x_coord)
+            + "_"
+            + str(ap.y_coord)
+            + " "
+            + str(ap.x_coord)
+            + " "
+            + str(ap.y_coord)
+            + " "
+            + str(ap.azimuth)
+            + " "
+            + str(ap.downtilt)
+        ).read()
+
+        if result != 0:
+            return render(request, "project/visualization.html", {"form": form})
 
     else:
         form = APForm()
@@ -90,6 +93,8 @@ def logout(request):
 def not_authenticated(request):
     if not request.user.is_authenticated:
         return redirect("%s?next=%s" % (settings.LOGIN_URL, request.path))
+
+
 # from tensorflow.keras.models import load_model
 
 # DLModel = load_model("./project/static/DLModel/20_20_100_v1_0510_jh1.h5")
