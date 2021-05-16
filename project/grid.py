@@ -69,6 +69,9 @@ def main():
     TY = sys.argv[3]
     azimuth = sys.argv[4]
     downtilt = sys.argv[5]
+    if id in os.listdir("./project/static/lams/") and len(os.listdir("./project/static/lams/" + id)) == 2944:
+        print("done")
+        return 1
 
     idx = 2
 

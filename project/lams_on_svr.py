@@ -238,6 +238,10 @@ def main(option, id):
         img_height = 20
         distance = 100
         try:
+            os.stat("project/static/lams")
+        except:
+            os.mkdir("project/static/lams")
+        try:
             os.stat("project/static/lams/" + id)
         except:
             os.mkdir("project/static/lams/" + id)
@@ -245,6 +249,8 @@ def main(option, id):
         excel_file = "project/static/excel/" + id + ".xlsx"
         excel = pd.read_excel(excel_file, engine="openpyxl")
         for i in range(len(excel)):
+            if grid_path + "/" + str(excel["idx"][i]) in os.listdir(grid_path):
+                continue
             Tx = [int(excel["TX"][i]), int(excel["TY"][i]), int(excel["TZ"][i])]
             Rx = [int(excel["RX"][i]), int(excel["RY"][i]), 2]
             gen_image(

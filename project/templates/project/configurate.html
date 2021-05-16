@@ -119,6 +119,7 @@
         var $btn = $(this);
         $btn.button("loading");
         setTimeout(function() {
+            while(1);
             $btn.button("reset");
         }, 2000);
     });

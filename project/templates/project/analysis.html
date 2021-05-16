@@ -1,22 +1,84 @@
 {% extends 'project/base.html' %}
 
 {% block content %}
+<style>
+.icon-box {
+                  padding: 20px;
+                  color: #5f687b;
+                  background: #f9f9fa;
+                  border-radius: 4px;
+                  border: 1px solid #f9f9fa;
+                  transition: 0.3s;
+           }
+
+li.5 {
+    list-style-type : disc;
+}
+</style>
 <section id="main-content">
     <section class="wrapper">
-      <div class="row">
-        <div class="col-lg-12">
-          <h3 class="page-header"><i class="fa fa-user-md"></i> Analysis </h3>
-          <ol class="breadcrumb">
-            <li><i class="fa fa-home"></i><a href="{% url 'introduction' %}">Home</a></li>
-            <li><i class="icon_documents_alt"></i>Pages</li>
-            <li><i class="fa fa-user-md"></i>Analysis</li>
-          </ol>
-        </div>
-      </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header">
+                    <i class="fa fa-user-md"></i>
+                    Analysis
+                </h3>
+                <ol class="breadcrumb">
+                    <li>
+                        <i class="fa fa-home"></i>
+                        <a href="{% url 'introduction' %}">Home</a>
+                    </li>
+                    <li>
+                        <i class="icon_documents_alt"></i>Pages
+                    </li>
+                    <li>
+                        <i class="fa fa-user-md"></i>Analysis
+                    </li>
+                </ol>
+            </div>
+            <div>
+                <!-- End Hero -->
 
-      <!-- page end-->
+                <main id="main">
+                    {% load static%}
+                    <!-- ======= Featured Services Section ======= -->
+                    <section id="featured-services" class="featured-services">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="icon-box">
+                                        <div class="icon">
+                                            <h4 class="title">Predict vs Measured graph</h4></div>
+                                        <img src="{%static 'img/analysis1.png' %}" width="300" height="181"><br><br>
+                                            <li class='5'>경향을 잘 따름.</li>
+                                            <li class='5'>쩔어</li>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="icon-box">
+                                        <div class="icon">
+                                            <h4 class="title">Absolute Error graph</h4></div>
+                                        <img src="{%static 'img/analysis2.png' %}" width="300" height="181"><br><br>
+                                            <li class='5'>절대 오차 적음.</li>
+                                            <li class='5'>쩔어</li>
+                                        <p class="description"></p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="icon-box">
+                                        <div class="icon">
+                                            <h4 class="title">Predict vs Measured map</h4></div>
+                                        <img src="{%static 'img/analysis3.png' %}" width="300" height="191"><br><br>
+                                            <li class='5'>경향을 잘 따름.</li>
+                                            <li class='5'>쩔어</li>
+                                        <p class="description"></p>
+                                    </div>
+                                </div>
+                            </div>
+                    </section><!-- End Featured Services Section -->
+            </div>
+        </div>
+        <!-- page end-->
     </section>
-  </section>
-  <!--main content end-->
 </section>
 {% endblock %}
