@@ -2,6 +2,8 @@
 # Input은 idx으로 이는 실험 결과의 ap_idx가 인자로 받아들어옴
 # return img_input(img test), num_input(numeric_test)
 import glob
+import numpy as np
+import padnas as np
 
 
 def load_input(idx):
