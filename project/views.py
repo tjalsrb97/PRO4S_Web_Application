@@ -9,8 +9,8 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from .models import UserExperiment, Result, Ap
 from .forms import APForm
-from .json_copier import jsFileCopy
-from .loadPL_Input import *
+# from .json_copier import jsFileCopy
+# from .loadPL_Input import *
 import os
 
 
@@ -48,10 +48,10 @@ def site_configuration(request):
         #     + str(ap.downtilt)
         # ).read()
         # LOAD INPUTS FOR DEEP LEARNING MODEL (IMG_INPUT, NUMERICAL_INPUT)
-        img_input, numeric_input = load_input(str(214))
+        # img_input, numeric_input = load_input(str(214))
         # img_input, numeric_input = load_input(ap.ap_idx)
-        pathLossResult = DLModelConfig.DLModel.predict([img_input, numeric_input])
-        jsFileCopy(ap.ap_idx, pathLossResult)
+        # pathLossResult = DLModelConfig.DLModel.predict([img_input, numeric_input])
+        # jsFileCopy(ap.ap_idx, pathLossResult)
         # if result != 0:
         #     return render(request, "project/visualization.html", {"form": form})
 
