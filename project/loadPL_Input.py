@@ -3,7 +3,7 @@
 # return img_input(img test), num_input(numeric_test)
 import glob
 import numpy as np
-import padnas as np
+import pandas as pd
 
 
 def load_input(idx):

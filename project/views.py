@@ -34,25 +34,26 @@ def site_configuration(request):
             ap.time = timezone.now()
             ap.save()
 
-        result = os.popen(
-            "python project/grid.py"
-            + " "
-            + str(ap.ap_idx)
-            + " "
-            + str(ap.x_coord)
-            + " "
-            + str(ap.y_coord)
-            + " "
-            + str(ap.azimuth)
-            + " "
-            + str(ap.downtilt)
-        ).read()
+        # result = os.popen(
+        #     "python project/grid.py"
+        #     + " "
+        #     + str(ap.ap_idx)
+        #     + " "
+        #     + str(ap.x_coord)
+        #     + " "
+        #     + str(ap.y_coord)
+        #     + " "
+        #     + str(ap.azimuth)
+        #     + " "
+        #     + str(ap.downtilt)
+        # ).read()
         # LOAD INPUTS FOR DEEP LEARNING MODEL (IMG_INPUT, NUMERICAL_INPUT)
-        img_input, numeric_input = load_input(ap.ap_idx)
+        img_input, numeric_input = load_input(str(214))
+        # img_input, numeric_input = load_input(ap.ap_idx)
         pathLossResult = DLModelConfig.DLModel.predict([img_input, numeric_input])
         jsFileCopy(ap.ap_idx, pathLossResult)
-        if result != 0:
-            return render(request, "project/visualization.html", {"form": form})
+        # if result != 0:
+        #     return render(request, "project/visualization.html", {"form": form})
 
     else:
         form = APForm()
