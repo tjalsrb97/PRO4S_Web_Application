@@ -1,7 +1,7 @@
 import json
 
 
-def copy(idx, result):
+def jsFileCopy(idx, result):
     original_fp = "project/static/layers/temp_0.js"
     copied_fp = "project/static/layers/temp_" + str(idx) + ".js"
 
@@ -15,7 +15,7 @@ def copy(idx, result):
         obj = data[data.find("{") : data.rfind("}") + 1]
         jsonObj = json.loads(obj)
         for i in range(len(jsonObj["features"])):
-            jsonObj["features"][i]["properties"]["wb1"] = str(44.0)
+            jsonObj["features"][i]["properties"]["wb1"] = result[i]
     with open(copied_fp, "a") as fww:
         for i in range(len(jsonObj["features"])):
             fww.write(str(jsonObj["features"][i]))
@@ -24,7 +24,4 @@ def copy(idx, result):
             else:
                 fww.write("\n")
         fww.write("]\n}\n")
-
-
-copy(1, 1)
 

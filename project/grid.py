@@ -69,14 +69,11 @@ def main():
     TY = sys.argv[3]
     azimuth = sys.argv[4]
     downtilt = sys.argv[5]
-    if id in os.listdir("./project/static/lams/") and len(os.listdir("./project/static/lams/" + id)) == 2944:
-        print("done")
-        return 1
 
     idx = 2
 
-    for y in range(4151010, 4151310, 5):
-        for x in range(325914, 326290, 5):
+    for y in range(int(TY)-200, int(TY)+200, 5):
+        for x in range(int(TX)-200, int(TX)+200, 5):
             if dim_1[y - y_min][x - x_min] == 0:
                 write_ws.cell(idx, 1, idx-1)
                 write_ws.cell(idx, 2, x)

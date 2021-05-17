@@ -1,3 +1,4 @@
+from project.apps import DLModelConfig
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.utils import timezone
@@ -8,10 +9,9 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from .models import UserExperiment, Result, Ap
 from .forms import APForm
+from .json_copier import jsFileCopy
+from .loadPL_Input import *
 import os
-
-# loading time
-# from .lams_on_svr import exit
 
 
 @login_required
@@ -37,9 +37,7 @@ def site_configuration(request):
         result = os.popen(
             "python project/grid.py"
             + " "
-            + str(ap.x_coord)
-            + "_"
-            + str(ap.y_coord)
+            + str(ap.ap_idx)
             + " "
             + str(ap.x_coord)
             + " "
@@ -50,6 +48,8 @@ def site_configuration(request):
             + str(ap.downtilt)
         ).read()
 
+        # pathLossResult = DLModelConfig.DLModel.predict([img_input,numerical_input])
+        # jsFileCopy(ap.ap_idx,pathLossResult)
         if result != 0:
             return render(request, "project/visualization.html", {"form": form})
 
@@ -75,11 +75,7 @@ def login(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         auth_login(request, user)
-        return render(
-            request,
-            "project/intro.html",
-            {"user": user},
-        )
+        return render(request, "project/intro.html", {"user": user},)
     else:
         messages.error(request, "invalid login")
         return redirect("index")
@@ -95,7 +91,4 @@ def not_authenticated(request):
         return redirect("%s?next=%s" % (settings.LOGIN_URL, request.path))
 
 
-# from tensorflow.keras.models import load_model
-
-# DLModel = load_model("./project/static/DLModel/20_20_100_v1_0510_jh1.h5")
 # DLModel.summary()

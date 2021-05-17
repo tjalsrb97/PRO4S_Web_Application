@@ -1,5 +1,5 @@
- {% extends 'project/base.html' %} {% block content %}
-
+ {% extends 'project/base.html' %} {% block content %} {% load static %}
+<script src="{% static 'layers/temp_0.js'%}"></script>
 <section id="main-content">
     <section class="wrapper">
         <div class="row">
@@ -37,4 +37,6 @@
     <div class="content">{{ post.content|truncatewords:30 }}</div>
     <div class="published-date">{{ post.published_date }}</div>
 </li>
+
+
 {% endfor %} {% endblock %}
