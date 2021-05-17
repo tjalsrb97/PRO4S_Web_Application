@@ -47,9 +47,10 @@ def site_configuration(request):
             + " "
             + str(ap.downtilt)
         ).read()
-
-        # pathLossResult = DLModelConfig.DLModel.predict([img_input,numerical_input])
-        # jsFileCopy(ap.ap_idx,pathLossResult)
+        # LOAD INPUTS FOR DEEP LEARNING MODEL (IMG_INPUT, NUMERICAL_INPUT)
+        img_input, numeric_input = load_input(ap.ap_idx)
+        pathLossResult = DLModelConfig.DLModel.predict([img_input, numeric_input])
+        jsFileCopy(ap.ap_idx, pathLossResult)
         if result != 0:
             return render(request, "project/visualization.html", {"form": form})
 
