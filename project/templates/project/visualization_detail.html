@@ -63,26 +63,10 @@
 <script src="{% static 'data/Gangnam_1m_1.js' %}"></script>
 <script src="{% static 'data/ap_2.js' %}"></script>
 <script>
-    var lang_min = {
-        {
-            coords1
-        }
-    };
-    var long_min = {
-        {
-            coords2
-        }
-    };
-    var lang_max = {
-        {
-            coords3
-        }
-    };
-    var long_max = {
-        {
-            coords4
-        }
-    };
+    var lang_min = {{coords1}};
+    var long_min = {{coords2}};
+    var lang_max = {{coords3}};
+    var long_max = {{coords4}};
     var crs = new L.Proj.CRS('EPSG:32652', '+proj=utm +zone=52 +datum=WGS84 +units=m +no_defs', {
         resolutions: [2800, 1400, 700, 350, 175, 84, 42, 21, 11.2, 5.6, 2.8, 1.4, 0.7, 0.35, 0.14, 0.07],
     });
