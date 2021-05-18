@@ -1,6 +1,4 @@
  {% extends 'project/base.html' %} {% block content %} {% load static %}
-<script type="text/javascript" src="{% static " layers/temp_0.js " %}">
-</script>
 <section id="main-content">
     <section class="wrapper">
         <div class="row">
@@ -77,8 +75,8 @@
         maxZoom: 28,
         minZoom: 1
     }).fitBounds([
-        [37.48524581921893, 127.01498861147982],
-        [37.489169526456834, 127.02392127588047]
+        [37.48524581, 127.014988611],
+        [37.48916952, 127.023921275]
     ]);
     var hash = new L.Hash(map);
     map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
