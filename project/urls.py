@@ -10,4 +10,9 @@ urlpatterns = [
     path("analysis/", views.analysis, name="analysis"),
     path("site_configuration/", views.site_configuration, name="site_configuration"),
     path("visualization/", views.visualization, name="visualization"),
+    path(
+        "visualization/<int:pk>/",
+        views.visualization_detail,
+        name="visualization_detail",
+    ),
 ]

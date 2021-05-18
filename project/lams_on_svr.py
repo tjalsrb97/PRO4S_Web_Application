@@ -73,6 +73,7 @@ def gen_image(Tx_coord, Rx_coord, name, img_width, img_height, distance):
                 getDots_Of_Orthogonal_Line(CentreDots[i], None, img_width, distance)
             )
         array_to_npy(XYs, Tx_coord, Rx_coord, name, img_width, img_height, distance)
+        return
     gradient = (Tx_coord[0] - Rx_coord[0]) / (Tx_coord[1] - Rx_coord[1])
     gradient *= -1
     CentreDots = getDottedLines(Tx_coord, Rx_coord, distance)  # CentreDots,

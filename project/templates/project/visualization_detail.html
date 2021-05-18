@@ -1,5 +1,7 @@
  {% extends 'project/base.html' %} {% block content %}
-
+{% load static %}
+<script type = "text/javascript" src="{% static "layers/temp_0.js" %}">
+</script>
 <section id="main-content">
     <section class="wrapper">
         <div class="row">
@@ -18,9 +20,8 @@
                         <i class="fa fa-user-md"></i>Visualization</li>
 
                 </ol>
-                
-          
-                    <table class="table">
+                {% comment %} visualiation에서 볼때 {% endcomment %}
+                <table class="table">
                         <tr>
                             <th>#</th>
                             <th>Lantitude</th>
@@ -28,21 +29,23 @@
                             <th>Antena Height</th>
                             <th>Azimuth</th>
                             <th>Downtilt</th>
-                            <th>Result</th>
                         </tr>
-                        {% for detail in details%}
                         <tr>
-                            <td>{{ detail.ap_idx }}</td>
-                            <td>{{ detail.x_coord }}</td>
-                            <td>{{ detail.y_coord }}</td>
-                            <td>{{ detail.z_coord }}</td>
-                            <td>{{ detail.azimuth }}</td>
-                            <td>{{ detail.downtilt }}</td>
-                            <td><a class="btn btn-primary" href="{% url 'visualization_detail' pk=detail.pk %}">결과</a></td>
+                            <td>{{ result.ap_idx }}</td>
+                            <td>{{ result.x_coord }}</td>
+                            <td>{{ result.y_coord }}</td>
+                            <td>{{ result.z_coord }}</td>
+                            <td>{{ result.azimuth }}</td>
+                            <td>{{ result.downtilt }}</td>
                         <tr>
-                        {% endfor %}
                     </table>
 
+                <div id="map">
+                    <div id="popup" class="ol-popup">
+                        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                        <div id="popup-content"></div>
+                    </div>
+                </div>
             </div>
         </div>
 

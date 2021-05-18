@@ -1,125 +1,145 @@
-{% extends 'project/base.html' %} {% block content %}
-<section id="main-content">
-    <section class="wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3 class="page-header"><i class="fa fa-user-md"></i> Site Configuration </h3>
-                <ol class="breadcrumb">
-                    <li><i class="fa fa-home"></i><a href="{% url 'introduction' %}">Home</a></li>
-                    <li><i class="icon_documents_alt"></i>Pages</li>
-                    <li><i class="fa fa-user-md"></i>Site Configuration</li>
-                </ol>
+{% extends 'project/base.html' %}
+{% block content %}
+{% load static%}
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header">
+                        <i class="fa fa-user-md"></i>
+                        Site Configuration
+                    </h3>
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="{% url 'introduction' %}">Home</a>
+                        </li>
+                        <li>
+                            <i class="icon_documents_alt"></i>Pages</li>
+                        <li>
+                            <i class="fa fa-user-md"></i>Site Configuration</li>
+                    </ol>
+                </div>
             </div>
-        </div>
 
-        <section id="main-content">
-            <section class="wrapper">
-                <!--overview start-->
+            <section id="main-content" >
+                <section class="wrapper" >
+                    <!--overview start-->
 
+                    <!-- statics end -->
 
-
-
-
-
-                <!-- statics end -->
-
-
-                <div class="col-md-6 portlets">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="pull-left">AP setting</div>
-                            <div class="widget-icons pull-right">
-                                <a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a>
-                                <a href="#" class="wclose"><i class="fa fa-times"></i></a>
+                    <div class="col-md-6 portlets" style="float:left; width:450px;">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="pull-left">AP setting</div>
+                                <div class="widget-icons pull-right">
+                                    <a href="#" class="wminimize">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a href="#" class="wclose">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="padd">
+                            <div class="panel-body">
+                                <div class="padd">
 
-                                <div class="form quick-post">
-                                    <!-- Edit profile form (not working)-->
-                                    <form method="POST" action="{% url 'site_configuration' %}" class="form-horizontal">
-                                        {% csrf_token %}
+                                    <div class="form quick-post">
+                                        <!-- Edit profile form (not working)-->
+                                        <form
+                                            method="POST"
+                                            action="{% url 'site_configuration' %}"
+                                            class="form-horizontal">
+                                            {% csrf_token %}
 
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-2" for="title">X coordinate</label>
-                                            <div class="col-lg-10">
-                                                {{ form.x_coord }}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-2" for="title">Y coordinate</label>
-                                            <div class="col-lg-10">
-                                                {{ form.y_coord }}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-2" for="title">Z coordinate</label>
-                                            <div class="col-lg-10">
-                                                {{ form.z_coord }}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-2" for="title">Azimuth</label>
-                                            <div class="col-lg-10">
-                                                {{ form.azimuth }}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-2" for="title">Downtilt</label>
-                                            <div class="col-lg-10">
-                                                {{ form.downtilt }}
-                                            </div>
-                                        </div>
-
-
-
-                                        <!-- Buttons -->
-                                        <div class="container main-section">
-                                            <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-12 heding">
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-12 text-center">
-                                                    <button type="submit" class="btn btn-danger btn-lg loading buttonload" id="load" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> LAMS 이미지 생성중...">Predict</button>
+                                            <div class="form-group">
+                                                <label class="control-label col-lg-2" for="title">Lantitude</label>
+                                                <div class="col-lg-10">
+                                                    {{ form.x_coord }}
                                                 </div>
                                             </div>
-                                        </div>
-                                    </form>
+                                            <div class="form-group">
+                                                <label class="control-label col-lg-2" for="title">Longithde</label>
+                                                <div class="col-lg-10">
+                                                    {{ form.y_coord }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-lg-2" for="title">Antena Height</label>
+                                                <div class="col-lg-10">
+                                                    {{ form.z_coord }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-lg-2" for="title">Azimuth</label>
+                                                <div class="col-lg-10">
+                                                    {{ form.azimuth }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-lg-2" for="title">Downtilt</label>
+                                                <div class="col-lg-10">
+                                                    {{ form.downtilt }}
+                                                </div>
+                                            </div>
 
+                                            <!-- Buttons -->
+                                            <div class="container main-section">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-12 heding"></div>
+                                                    <div class="col-lg-12 col-md-12 col-12 text-center">
+                                                        <button
+                                                            type="submit"
+                                                            class="btn btn-danger btn-lg loading buttonload"
+                                                            id="load"
+                                                            data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> LAMS 이미지 생성중...">Predict</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- project team & activity end -->
+                                
 
                                 </div>
-
-                                <!-- project team & activity end -->
-
-            </section>
-
-
-            </div>
-            <div class=" widget-foot ">
-                <!-- Footer goes here -->
-            </div>
-            </div>
-            </div>
-
-            </div>
-
-            </div>
+                            </div>
+              
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 portlets" >
+                      <div style="float:left; width:450px;">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <div class="pull-left">
+                              Gangnam Map
+                            </div>
+                          </div>
+                        </div>
+                        <img src="{%static 'img/Gangnam_map.png' %}" width="450" height="400">
+                      </div>
+                     </div>
+                    
+                        
             <!-- project team & activity end -->
-
+          </section>
         </section>
-
-
+        
+        
         <!--main content end-->
-        ` </section>
+        `
+    </section>
+
     <!--main content end-->
 </section>
+
 <script>
-    $(".loading").on("click", function() {
+    $(".loading").on("click", function () {
         var $btn = $(this);
         $btn.button("loading");
-        setTimeout(function() {
-            while(1);
+        setInterval(function () {
             $btn.button("reset");
         }, 2000);
     });

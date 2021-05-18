@@ -27,4 +27,3 @@ def copy(idx, result):
 
 
 copy(1, 1)
-
