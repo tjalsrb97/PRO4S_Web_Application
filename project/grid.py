@@ -3,6 +3,7 @@ from openpyxl import Workbook
 import math
 import os
 import sys
+from pyproj import Transformer
 
 x_min = 324600  # minimum x value
 y_min = 4150520  # minimum y value
@@ -71,13 +72,28 @@ def main():
     write_ws["H1"] = "chai1"
     write_ws["I1"] = "chai2"
     write_ws["J1"] = "dist"
+    write_ws["K1"] = "chaidist"
+    write_ws["L1"] = "latitude"
+    write_ws["M1"] = "longitude"
+    
     id = sys.argv[1]
     TX = sys.argv[2]
     TY = sys.argv[3]
     azimuth = sys.argv[4]
     downtilt = sys.argv[5]
 
+    if (
+        id in os.listdir("./project/static/lams/")
+        and len(os.listdir("./project/static/lams/" + id)) == 2944
+    ):
+        print("done")
+        return 1
+
     idx = 2
+
+    # proj1 = Proj(init="epsg:32652")
+    # proj2 = Proj(init="epsg:4326")
+    transformer = Transformer.from_crs(32652, 4326)
 
     for y in range(int(TY) - 200, int(TY) + 200, 5):
         for x in range(int(TX) - 200, int(TX) + 200, 5):
@@ -98,16 +114,21 @@ def main():
                 downtilt = int(downtilt)
                 Rx = [x, y, dim_1[y - y_min][x - x_min] + 2]
                 res = angle_diff(Tx, Rx, azimuth, downtilt)
+                ############## 좌표계 변환 ##################
+                #############################################
                 # print(res)
                 write_ws.cell(idx, 8, res[1])
                 write_ws.cell(idx, 9, res[2])
                 write_ws.cell(idx, 10, res[3])
+                write_ws.cell(idx, 11, res[4])
+                write_ws.cell(idx, 12, transformer.transform(x, y)[0])
+                write_ws.cell(idx, 13, transformer.transform(x, y)[1])
                 idx += 1
 
     # Grid 좌표 엑셀 파일 이름 설정해줘야함
     write_wb.save("project/static/excel/" + id + ".xlsx")
     result = os.popen("python project/lams_on_svr.py grid " + id).read()
-    print(result)
+    # print(result)
 
 
 if __name__ == "__main__":

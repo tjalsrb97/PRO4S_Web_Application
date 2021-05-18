@@ -1,5 +1,6 @@
+<
 from project.apps import DLModelConfig
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from django.utils import timezone
 from django.contrib import messages
@@ -26,13 +27,13 @@ def analysis(request):
 
 @login_required
 def site_configuration(request):
-    print(os.getcwd())
     if request.method == "POST":
         form = APForm(request.POST)
         if form.is_valid():
             ap = form.save(commit=False)
             ap.time = timezone.now()
             ap.save()
+
 
         # result = os.popen(
         #     "python project/grid.py"
@@ -52,8 +53,13 @@ def site_configuration(request):
         # img_input, numeric_input = load_input(ap.ap_idx)
         # pathLossResult = DLModelConfig.DLModel.predict([img_input, numeric_input])
         # jsFileCopy(ap.ap_idx, pathLossResult)
-        # if result != 0:
-        #     return render(request, "project/visualization.html", {"form": form})
+        if result != 0:
+                return render(
+                    request,
+                    "project/visualization_detail.html",
+                    {"ap": ap},
+                )
+
 
     else:
         form = APForm()
@@ -63,7 +69,18 @@ def site_configuration(request):
 
 @login_required
 def visualization(request):
-    return render(request, "project/visualization.html", {})
+    details = Ap.objects.order_by("ap_idx")
+    return render(request, "project/visualization.html", {"details": details})
+
+
+@login_required
+def visualization_detail(request, pk):
+    result = get_object_or_404(Ap, pk=pk)
+    return render(
+        request,
+        "project/visualization_detail.html",
+        {"result": result},
+    )
 
 
 def index(request):
