@@ -75,11 +75,13 @@ def main():
     write_ws["K1"] = "chaidist"
     write_ws["L1"] = "latitude"
     write_ws["M1"] = "longitude"
+    
     id = sys.argv[1]
     TX = sys.argv[2]
     TY = sys.argv[3]
     azimuth = sys.argv[4]
     downtilt = sys.argv[5]
+
     if (
         id in os.listdir("./project/static/lams/")
         and len(os.listdir("./project/static/lams/" + id)) == 2944
@@ -92,6 +94,7 @@ def main():
     # proj1 = Proj(init="epsg:32652")
     # proj2 = Proj(init="epsg:4326")
     transformer = Transformer.from_crs(32652, 4326)
+
     for y in range(int(TY) - 200, int(TY) + 200, 5):
         for x in range(int(TX) - 200, int(TX) + 200, 5):
             if dim_1[y - y_min][x - x_min] == 0:
