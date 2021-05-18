@@ -19,12 +19,30 @@
 
                 </ol>
                 
-                {% for detail in details %}
-                    <div>
-                        <div><p>{{ detail.ap_idx }}</p></div>
-                        <h1><a href="{% url 'visualization_detail' pk=detail.pk %}">{{ detail.x_coord }}</a></h1>
-                    </div>
-                {% endfor %}
+          
+                    <table class="table">
+                        <tr>
+                            <th>#</th>
+                            <th>Lantitude</th>
+                            <th>Longitude</th>
+                            <th>Antena Height</th>
+                            <th>Azimuth</th>
+                            <th>Downtilt</th>
+                            <th>Result</th>
+                        </tr>
+                        {% for detail in details%}
+                        <tr>
+                            <td>{{ detail.ap_idx }}</td>
+                            <td>{{ detail.x_coord }}</td>
+                            <td>{{ detail.y_coord }}</td>
+                            <td>{{ detail.z_coord }}</td>
+                            <td>{{ detail.azimuth }}</td>
+                            <td>{{ detail.downtilt }}</td>
+                            <td><a class="btn btn-primary" href="{% url 'visualization_detail' pk=detail.pk %}">결과</a></td>
+                        <tr>
+                        {% endfor %}
+                    </table>
+
             </div>
         </div>
 

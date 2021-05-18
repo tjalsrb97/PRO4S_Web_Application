@@ -20,21 +20,26 @@
                         <i class="fa fa-user-md"></i>Visualization</li>
 
                 </ol>
-                {% comment %} <div id="map">
-                    <div id="popup" class="ol-popup">
-                        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-                        <div id="popup-content"></div>
-                    </div>
-                </div> {% endcomment %}
+                {% comment %} visualiation에서 볼때 {% endcomment %}
+                <table class="table">
+                        <tr>
+                            <th>#</th>
+                            <th>Lantitude</th>
+                            <th>Longitude</th>
+                            <th>Antena Height</th>
+                            <th>Azimuth</th>
+                            <th>Downtilt</th>
+                        </tr>
+                        <tr>
+                            <td>{{ result.ap_idx }}</td>
+                            <td>{{ result.x_coord }}</td>
+                            <td>{{ result.y_coord }}</td>
+                            <td>{{ result.z_coord }}</td>
+                            <td>{{ result.azimuth }}</td>
+                            <td>{{ result.downtilt }}</td>
+                        <tr>
+                    </table>
 
-                {% comment %} {% for detail in details %}
-                    <div>
-                        <div><p>{{ detail.resuit_idx }}</p></div>
-                        <h1><a href=""{% url 'visualization_detail' pk=detail.pk %}"">{{ detail.image }}</a></h1>
-                    </div>
-                {% endfor %} {% endcomment %}
-
-                <div> {{ ap.ap_idx }} <div>
                 <div id="map">
                     <div id="popup" class="ol-popup">
                         <a href="#" id="popup-closer" class="ol-popup-closer"></a>
@@ -47,12 +52,4 @@
         <!-- page end-->
     </section>
 </section>
-
-{% comment %} {% for post in posts %}
-<li>
-    <div class="title"><a href="">{{ post.title }}</a></div>
-    <div class="content">{{ post.content|truncatewords:30 }}</div>
-    <div class="published-date">{{ post.published_date }}</div>
-</li>
-{% endfor %}  {% endcomment %}
 {% endblock %}
