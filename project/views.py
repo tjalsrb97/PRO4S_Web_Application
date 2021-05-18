@@ -1,4 +1,4 @@
-from project.apps import DLModelConfig
+# from project.apps import DLModelConfig
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from django.utils import timezone
@@ -9,6 +9,8 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from .models import UserExperiment, Result, Ap
 from .forms import APForm
+from pyproj import Transformer
+
 # from .json_copier import jsFileCopy
 # from .loadPL_Input import *
 import os
@@ -33,7 +35,6 @@ def site_configuration(request):
             ap.time = timezone.now()
             ap.save()
 
-
         # result = os.popen(
         #     "python project/grid.py"
         #     + " "
@@ -53,12 +54,11 @@ def site_configuration(request):
         # pathLossResult = DLModelConfig.DLModel.predict([img_input, numeric_input])
         # jsFileCopy(ap.ap_idx, pathLossResult)
         if result != 0:
-                return render(
-                    request,
-                    "project/visualization_detail.html",
-                    {"ap": ap},
-                )
-
+            return render(
+                request,
+                "project/visualization_detail.html",
+                {"ap": ap},
+            )
 
     else:
         form = APForm()
@@ -75,10 +75,30 @@ def visualization(request):
 @login_required
 def visualization_detail(request, pk):
     result = get_object_or_404(Ap, pk=pk)
+    transformer = Transformer.from_crs(32652, 4326)
+    coords1 = transformer.transform(
+        int(result.x_coord) - 200, int(result.y_coord) - 200
+    )[0]
+    coords2 = transformer.transform(
+        int(result.x_coord) - 200, int(result.y_coord) - 200
+    )[1]
+    coords3 = transformer.transform(
+        int(result.x_coord) + 200, int(result.y_coord) + 200
+    )[0]
+    coords4 = transformer.transform(
+        int(result.x_coord) + 200, int(result.y_coord) + 200
+    )[1]
+    print(coords1)
     return render(
         request,
         "project/visualization_detail.html",
-        {"result": result},
+        {
+            "result": result,
+            "coords1": coords1,
+            "coords2": coords2,
+            "coords3": coords3,
+            "coords4": coords4,
+        },
     )
 
 
@@ -93,7 +113,11 @@ def login(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         auth_login(request, user)
-        return render(request, "project/intro.html", {"user": user},)
+        return render(
+            request,
+            "project/intro.html",
+            {"user": user},
+        )
     else:
         messages.error(request, "invalid login")
         return redirect("index")
