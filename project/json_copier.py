@@ -42,7 +42,7 @@ def jsFileCopy(idx, result):
             temp.write(temp_first_lines[i])
         for i in range(len(dataFrame)):
             dumpJson = jsonObj1["features"][6]
-            dumpJson["properties"]["rss"]=result[i]
+            dumpJson["properties"]["rss"]=result[i][0]
             dumpJson["geometry"]["coordinates"]=[longt[i],lat[i]]
             temp.write(str(dumpJson))
             if i != len(dataFrame):

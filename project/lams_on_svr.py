@@ -239,9 +239,9 @@ def main(option, id):
         img_height = 20
         distance = 100
         try:
-            os.stat("lams")
+            os.stat("project/static/lams")
         except:
-            os.mkdir("lams")
+            os.mkdir("project/static/lams")
         try:
             os.stat("project/static/lams/" + id)
         except:
@@ -249,7 +249,11 @@ def main(option, id):
         grid_path = "project/static/lams/" + id
         excel_file = "project/static/excel/" + id + ".xlsx"
         excel = pd.read_excel(excel_file, engine="openpyxl")
-        for i in range(len(excel)):
+        start = len(os.listdir("./project/static/lams/" + id))
+        if start == 0: start=1
+        for i in range(start-1, len(excel)):
+            if grid_path + "/" + str(excel["idx"][i]) in os.listdir(grid_path):
+                continue
             Tx = [int(excel["TX"][i]), int(excel["TY"][i]), int(excel["TZ"][i])]
             Rx = [int(excel["RX"][i]), int(excel["RY"][i]), 2]
             gen_image(
@@ -260,7 +264,7 @@ def main(option, id):
                 img_height,
                 distance,
             )
-            print(i + 1, " / ", len(excel), ": GRID")
+            # print(i + 1, " / ", len(excel), ": GRID")
     else:
         print("invalid input.")
         exit(1)
@@ -279,3 +283,4 @@ if __name__ == "__main__":
     id = sys.argv[2]
 
     main(option, id)
+    print("Done")

@@ -22,5 +22,7 @@ def load_input(idx):
         x_test[j][2] = numeric_data_test["dist"][j] / 240
         x_test[j][3] = numeric_data_test["chaidist"][j] / 22000
     numeric_test = np.array(x_test)
+    img_test= np.expand_dims(img_test, axis=4)
+
     return img_test, numeric_test
 
