@@ -82,12 +82,12 @@ def main():
     azimuth = sys.argv[4]
     downtilt = sys.argv[5]
 
-    if (
-        id in os.listdir("./project/static/lams/")
-        and len(os.listdir("./project/static/lams/" + id)) == 2944
-    ):
-        print("done")
-        return 1
+    # if (
+    #     id in os.listdir("./project/static/lams/")
+    #     and len(os.listdir("./project/static/lams/" + id)) == 294
+    # ):
+    #     print("done")
+    #     return 1
 
     idx = 2
 
@@ -128,7 +128,7 @@ def main():
     # Grid 좌표 엑셀 파일 이름 설정해줘야함
     write_wb.save("project/static/excel/" + id + ".xlsx")
     result = os.popen("python project/lams_on_svr.py grid " + id).read()
-    # print(result)
+    print(result)
 
 
 if __name__ == "__main__":

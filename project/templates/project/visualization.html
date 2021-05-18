@@ -18,10 +18,10 @@
 
                 </ol>
               
-                    <table class="table">
+                    <table class="table" >
                         <tr>
-                            <th>#</th>
-                            <th>Lantitude</th>
+                            <th style="text-align: center;">TIME</th>
+                            <th>Langitude</th>
                             <th>Longitude</th>
                             <th>Antena Height</th>
                             <th>Azimuth</th>
@@ -30,14 +30,14 @@
                         </tr>
                         {% for detail in details%}
                         <tr>
-                            <td>{{ detail.ap_idx }}</td>
+                            <td style="text-align: center;">{{ detail.time }}</td>
                             <td>{{ detail.x_coord }}</td>
                             <td>{{ detail.y_coord }}</td>
                             <td>{{ detail.z_coord }}</td>
                             <td>{{ detail.azimuth }}</td>
                             <td>{{ detail.downtilt }}</td>
                             <td><a class="btn btn-primary" href="{% url 'visualization_detail' pk=detail.pk %}">결과</a></td>
-                        <tr>
+                        </tr>
                         {% endfor %}
                     </table>
 

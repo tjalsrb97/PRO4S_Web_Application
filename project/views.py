@@ -1,4 +1,5 @@
-# from project.apps import DLModelConfig
+from project.apps import DLModelConfig
+from pyproj import Transformer
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from django.utils import timezone
@@ -9,10 +10,10 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from .models import UserExperiment, Result, Ap
 from .forms import APForm
-from pyproj import Transformer
+from .json_copier import jsFileCopy
+from .loadPL_Input import *
+import numpy as np
 
-# from .json_copier import jsFileCopy
-# from .loadPL_Input import *
 import os
 
 
@@ -34,31 +35,35 @@ def site_configuration(request):
             ap = form.save(commit=False)
             ap.time = timezone.now()
             ap.save()
+        result=0
+        flag=0
+        if flag==0:
+            print("grid is executing")
+            result = os.popen(
+                "python project/grid.py"
+                + " "
+                + str(ap.x_coord)
+                + "_"
+                + str(ap.y_coord)
+                + " "
+                + str(ap.x_coord)
+                + " "
+                + str(ap.y_coord)
+                + " "
+                + str(ap.azimuth)
+                + " "
+                + str(ap.downtilt)
+            ).read()
 
-        # result = os.popen(
-        #     "python project/grid.py"
-        #     + " "
-        #     + str(ap.ap_idx)
-        #     + " "
-        #     + str(ap.x_coord)
-        #     + " "
-        #     + str(ap.y_coord)
-        #     + " "
-        #     + str(ap.azimuth)
-        #     + " "
-        #     + str(ap.downtilt)
-        # ).read()
-        # LOAD INPUTS FOR DEEP LEARNING MODEL (IMG_INPUT, NUMERICAL_INPUT)
+        print("grid is finished")
+        flag=1
+        if flag==1:
+        ## LOAD INPUTS FOR DEEP LEARNING MODEL (IMG_INPUT, NUMERICAL_INPUT)
         # img_input, numeric_input = load_input(str(214))
-        # img_input, numeric_input = load_input(ap.ap_idx)
-        # pathLossResult = DLModelConfig.DLModel.predict([img_input, numeric_input])
-        # jsFileCopy(ap.ap_idx, pathLossResult)
-        if result != 0:
-            return render(
-                request,
-                "project/visualization_detail.html",
-                {"ap": ap},
-            )
+
+            if result != 0:
+                details = Ap.objects.order_by("ap_idx")
+                return render(request, "project/visualization.html", {"details": details})
 
     else:
         form = APForm()
@@ -69,12 +74,17 @@ def site_configuration(request):
 @login_required
 def visualization(request):
     details = Ap.objects.order_by("ap_idx")
+
     return render(request, "project/visualization.html", {"details": details})
 
 
 @login_required
 def visualization_detail(request, pk):
     result = get_object_or_404(Ap, pk=pk)
+    img_input, numeric_input = load_input(str(result.x_coord)+"_"+ str(result.y_coord))
+    pathLossResult = DLModelConfig.DLModel.predict([img_input, numeric_input])
+    pathLossResult-=120
+    jsFileCopy(str(result.x_coord)+"_"+ str(result.y_coord), pathLossResult)
     transformer = Transformer.from_crs(32652, 4326)
     coords1 = transformer.transform(
         int(result.x_coord) - 200, int(result.y_coord) - 200
