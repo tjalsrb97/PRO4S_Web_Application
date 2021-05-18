@@ -49,7 +49,7 @@ def site_configuration(request):
         ).read()
         ## LOAD INPUTS FOR DEEP LEARNING MODEL (IMG_INPUT, NUMERICAL_INPUT)
         # img_input, numeric_input = load_input(str(214))
-        img_input, numeric_input = load_input(ap.ap_idx)
+        img_input, numeric_input = load_input(str(ap.ap_idx))
         pathLossResult = DLModelConfig.DLModel.predict([img_input, numeric_input])
         jsFileCopy(ap.ap_idx, pathLossResult)
         if result != 0:
