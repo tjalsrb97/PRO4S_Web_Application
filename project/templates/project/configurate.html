@@ -54,23 +54,23 @@
                                             {% csrf_token %}
 
                                             <div class="form-group">
-                                                <label class="control-label col-lg-2" for="title">Lantitude</label>
+                                                <label class="control-label col-lg-2" for="title">Langitude</label>
                                                 <div class="col-lg-10">
                                                     {{ form.x_coord }}
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label col-lg-2" for="title">Longithde</label>
+                                                <label class="control-label col-lg-2" for="title">Longitude</label>
                                                 <div class="col-lg-10">
                                                     {{ form.y_coord }}
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label class="control-label col-lg-2" for="title">Antena Height</label>
                                                 <div class="col-lg-10">
                                                     {{ form.z_coord }}
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="form-group">
                                                 <label class="control-label col-lg-2" for="title">Azimuth</label>
                                                 <div class="col-lg-10">
@@ -118,7 +118,7 @@
                             </div>
                           </div>
                         </div>
-                        <img src="{%static 'img/Gangnam_map.png' %}" width="450" height="400">
+                        <img src="{%static 'img/Gangnam_map.png' %}" width="450" height="300">
                       </div>
                      </div>
                     
