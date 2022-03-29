@@ -12,15 +12,15 @@
 
 ![image](https://user-images.githubusercontent.com/42092864/120883080-278c0500-c616-11eb-8bee-07cacbc869f4.png)
 
-> PRO4S 도심지 mmWave 경로손실 웹어플리케이션 설치
->> 1. Fork From repository
->> 2. requirments.txt 를 확인하여 dependent 라이브러릴 설치해주세요
->> 3. SuperUser를 만들고 저희 웹 어플리케이션을 이용해보세요!
+###  PRO4S 도심지 mmWave 경로손실 웹어플리케이션 설치
+ 1. Fork From repository
+ 2. requirments.txt 를 확인하여 dependent 라이브러릴 설치해주세요
+ 3. SuperUser를 만들고 저희 웹 어플리케이션을 이용해보세요!
 
-> PRO4S 도심지 mmWave 경로손실 모델 및 시각화 Flow
->> 1. 유저로부터 AP의 Configuration 받아온다(X,Y,Z,Downtilt,Azimuth) : 
->>>XYZ Coordinates as UTM EPSG:32652
-Prime meridian: Greenwich
->>2. 유저의 configuration부터 서버가 예측에 필요한 자료를 생성한다.
->>> {configuration_of_user}.xlsx, lams image of each point-point
->>3. 약간의 시간(<10min)이 지난후 결과를 예측 할 수 있다.
+###  PRO4S 도심지 mmWave 경로손실 모델 및 시각화 Flow
+ 1. 유저로부터 AP의 Configuration 받아온다(X,Y,Z,Downtilt,Azimuth) : 
+      XYZ Coordinates as UTM EPSG:32652
+      Prime meridian: Greenwich
+ 2. 유저의 configuration부터 서버가 예측에 필요한 자료를 생성한다.
+ 3.  {configuration_of_user}.xlsx, lams image of each point-point
+ 4. 약간의 시간(<10min)이 지난후 결과를 예측 할 수 있다.
