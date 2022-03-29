@@ -1,32 +1,26 @@
-#양준혁
+# 2021년 산학연계 프로젝트 PRO4s
+-----
 
-#파이썬에서는 `mysqlclient`라는 라이브러리를 통해 MySQL과 DB를 연동할 수 있다.
+## 산혁연계 기업 : LG U+
 
-```
-$ pip install mysqlclient
-```
+## 담당 : 이혁준 교수님(CINe Lab), 이지훈 조교님
 
-DB 연결을 할 시 my_settings.py 를 이용하여 DATABASE를 가져와야함
+---
 
-my_settings.py 내용을 적절히 수정바람(Host, 비밀번호 )
+웹 어플리케이션을 이용하여, 아래 그림과 같이 도심지에서 mmWave전파의 경로손실을 예측할 수 있다.
+> 사용된 대표적인 프레임워크/라이브러리는 Tensorflow, Mysql, Django 기반입니다!
 
-```
-DATABASES = {
-    'default' : {
-        'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'webdb',  
-        'USER': 'root',  
-        'PASSWORD': 'password',  
-        'HOST': 'DBIPADDRESS',   
-        'PORT': '3306',  
-    }
-}
+![image](https://user-images.githubusercontent.com/42092864/120883080-278c0500-c616-11eb-8bee-07cacbc869f4.png)
 
-```
-settings.py DATABASE를 하단과 같이 변경
+> PRO4S 도심지 mmWave 경로손실 웹어플리케이션 설치
+>> 1. Fork From repository
+>> 2. requirments.txt 를 확인하여 dependent 라이브러릴 설치해주세요
+>> 3. SuperUser를 만들고 저희 웹 어플리케이션을 이용해보세요!
 
-```
-from . import my_settings
-
-DATABASES = my_settings.DATABASES
-```
+> PRO4S 도심지 mmWave 경로손실 모델 및 시각화 Flow
+>> 1. 유저로부터 AP의 Configuration 받아온다(X,Y,Z,Downtilt,Azimuth) : 
+>>>XYZ Coordinates as UTM EPSG:32652
+Prime meridian: Greenwich
+>>2. 유저의 configuration부터 서버가 예측에 필요한 자료를 생성한다.
+>>> {configuration_of_user}.xlsx, lams image of each point-point
+>>3. 약간의 시간(<10min)이 지난후 결과를 예측 할 수 있다.
