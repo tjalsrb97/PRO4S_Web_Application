@@ -72,7 +72,7 @@
 ---
 본 레포지토리의 연구결과에 관심있으시다면 아래로 연락 부탁드립니다. (CINe Lab 연구 진행중, 2022-04-22 ~ )  
 
-Mail
+Mail  
 진우빈 (ubinjin2@naver.com)  
 김현진 (zx8635@gmail.com)  
 
