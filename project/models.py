@@ -14,7 +14,7 @@ class Ap(models.Model):
     time = models.DateTimeField(db_column='TIME', blank=True, null=True)  # Field name made lowercase.
     x_coord = models.CharField(db_column='X_coord', max_length=45)  # Field name made lowercase.
     y_coord = models.CharField(db_column='Y_coord', max_length=45)  # Field name made lowercase.
-    z_coord = models.CharField(db_column='Z_coord', max_length=45)  # Field name made lowercase.
+    # z_coord = models.CharField(db_column='Z_coord', max_length=45)  # Field name made lowercase.
     azimuth = models.CharField(db_column='Azimuth', max_length=45)  # Field name made lowercase.
     downtilt = models.CharField(db_column='Downtilt', max_length=45)  # Field name made lowercase.
 

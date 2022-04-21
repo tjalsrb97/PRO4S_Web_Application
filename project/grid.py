@@ -32,6 +32,8 @@ def angle_diff(Tx, Rx, azi, dtilt):
         theta = 90 + theta * (-1)
         case = 3
     azi_diff = abs(theta - azi)
+    if azi_diff > 180 :
+        azi_diff= 360-azi_diff
     tilt_diff = abs(theta2 - dtilt)
 
     alpha = ln3 / math.tan(dtilt)
