@@ -62,19 +62,19 @@
 
 ## 4. PRO4S 도심지 mmWave 경로손실 모델 및 시각화 Flow
 
- 1. 유저로부터 AP의 Configuration 받아온다(X,Y,Z,Downtilt,Azimuth) : 
-      XYZ Coordinates as UTM EPSG:32652
-      Prime meridian: Greenwich
- 2. 유저의 configuration부터 서버가 예측에 필요한 자료를 생성한다.
- 3.  {configuration_of_user}.xlsx, lams image of each point-point
- 4. 약간의 시간(<10min)이 지난후 결과를 예측 할 수 있다.
+ 1. 유저로부터 AP의 Configuration 받아온다(X,Y,Z,Downtilt,Azimuth) :   
+      XYZ Coordinates as UTM EPSG:32652   
+      Prime meridian: Greenwich  
+ 2. 유저의 configuration부터 서버가 예측에 필요한 자료를 생성한다.  
+ 3.  {configuration_of_user}.xlsx, lams image of each point-point  
+ 4. 약간의 시간(<10min)이 지난후 결과를 예측 할 수 있다.  
 
 ---
-본 레포지토리의 연구결과에 관심있으시다면 아래로 연락 부탁드립니다. (CINe Lab 연구 진행중, 2022-04-22 ~ )
+본 레포지토리의 연구결과에 관심있으시다면 아래로 연락 부탁드립니다. (CINe Lab 연구 진행중, 2022-04-22 ~ )  
 
 Mail
-진우빈 (ubinjin2@naver.com)
-김현진 (zx8635@gmail.com)
+진우빈 (ubinjin2@naver.com)  
+김현진 (zx8635@gmail.com)  
 
-Github
-@ubinjin @ChickenRushKR
+Github  
+@ubinjin @ChickenRushKR  
